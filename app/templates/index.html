@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends "header.html" %}
+<!--<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px" id="products"> -->
+{% block title %}Home{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/index.css">
+{% endblock %}
+
+{% block content %}
+
+<ul id="products" class="cards">
+    {% for product in products %}
+    <li>
+        <a href="/product/{{ product.code }}" class="card">
+            <img src="{{ product.image_url.0 }}" class="card__image" alt="{{ product.name }}" />
+            <div class="card__overlay">
+                <div class="card__header">
+                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                    <img class="card__thumb" src="{{ product.image_url.0 }}" alt="" />
+                    <div class="card__header-text">
+                        <h3 class="card__title">{{ product.name }}</h3>
+                        <span class="card__status">Stock: {{ product.stock }}</span>
+                    </div>
+                </div>
+                <p class="card__description">{{ product.description }}</p>
+            </div>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+<!--</div>-->
+<script>
+</script>
+{% endblock %}
